@@ -1,0 +1,61 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseProject"
+        xmlns:oxy="http://oxyplot.org/wpf" x:Class="CourseProject.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="425" Width="734" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize">
+    <Grid>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="259,290,0,0" VerticalAlignment="Top" Style="{DynamicResource BuildButton}" Click="ApplyButtonClick"/>
+        <TextBox Name="BufferSizeTextBox"  HorizontalAlignment="Left" Margin="177,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="{x:Null}" />
+        <Label Content="Input your data:" HorizontalAlignment="Left" Margin="93,64,0,0" VerticalAlignment="Top" Style="{DynamicResource Title2}"/>
+        <Label Content="Size of buffer:" HorizontalAlignment="Left" Margin="45,125,0,0" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=General}" Height="25"/>
+        <TextBox Name="PreBufferSizeTextBox" HorizontalAlignment="Left" Margin="177,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="{x:Null}"/>
+        <Label Content="Size of prebuffer:" HorizontalAlignment="Left" Margin="45,164,0,0" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=General}"/>
+        <TextBox Name="PageTextBox" HorizontalAlignment="Left" Margin="178,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="Pages:" HorizontalAlignment="Left" Margin="45,201,0,0" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=General}"/>
+        <ComboBox Name="AlgorithmComboBox" HorizontalAlignment="Left" Margin="180,244,0,0" VerticalAlignment="Top" Width="120" Height="22" Background="White" BorderBrush="{x:Null}" Foreground="{StaticResource Black}">
+            <ComboBoxItem Name="create" IsSelected="True">LIFO</ComboBoxItem>
+            <ComboBoxItem Name="update">NRU</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Algorithm:" HorizontalAlignment="Left" Margin="45,242,0,0" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=General}"/>
+        <Label Content="Connection status:" HorizontalAlignment="Left" Margin="39,353,0,0" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=General}"/>
+        <Label x:Name="ConnectionStatus" HorizontalAlignment="Left" Margin="152,353,0,0" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=General}" Background="{x:Null}"/>
+        <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,347,0,0" VerticalAlignment="Top" Width="874" Fill="#FF8E8E93"/>
+        <Menu Margin="0,0,0,370" Background="#FFF2F2F7">
+            <MenuItem Width="34" Height="19" Header="File"></MenuItem>
+            <MenuItem Width="48" Height="19" Header="About" Click="OpenAbout_Click"></MenuItem>
+            <MenuItem Width="38" Height="19" Header="Exit" Foreground="{StaticResource Red}" Click="Exit_Click"></MenuItem>
+        </Menu>
+        <Label Content="NRU/LIFO" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Style="{DynamicResource Title}"/>
+        <TabControl Margin="371,64,4,61">
+            <TabItem Header="Computing">
+                <Grid Margin="0,0,0,-2">
+                    <Label Content="Result:" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=Title2}" Margin="0,10,0,0"/>
+                    <ListBox Name="HistoryListBox" Margin="0,49,0,0">
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Graph">
+                <Grid>
+                    <WpfPlot Name="BufferWpfPlot" HorizontalAlignment="Center" VerticalAlignment="Top" Height="208" Width="296" Margin="0,49,0,0"/>
+                    <Label Content="Your  graph:" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{DynamicResource ResourceKey=Title2}" Margin="0,10,0,0"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Expander HorizontalAlignment="Left" Height="122" Header="Connection settings" Margin="486,255,0,0" VerticalAlignment="Top" Width="238" ExpandDirection="Up">
+            <Grid  Margin="0,0,0,8">
+                <Rectangle HorizontalAlignment="Center" Height="91" VerticalAlignment="Center" Width="236"/>
+                <Label Content="Ip:port :" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Margin="2,5,0,0"/>
+                <TextBox x:Name="IpPortTextBox" Text="127.0.0.1:10000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,5,0,0" Width="133"/>
+                <Label Content="Service name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,39,0,0"/>
+                <TextBox x:Name="ServiceNameTextBox" Text="MyService" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,39,0,0" Width="133"/>
+                <Button Name="ConnectButton" Content="Connect" HorizontalAlignment="Left" Margin="177,63,0,4" FontSize="12" Style="{DynamicResource Button}" Click="ConnectButtonClick"/>
+            </Grid>
+
+        </Expander>
+
+    </Grid>
+</Window>
